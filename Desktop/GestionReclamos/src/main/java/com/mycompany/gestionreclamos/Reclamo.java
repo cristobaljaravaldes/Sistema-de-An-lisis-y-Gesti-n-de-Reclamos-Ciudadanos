@@ -1,11 +1,8 @@
-    package com.mycompany.gestionreclamos;
+package com.mycompany.gestionreclamos;
 import java.time.LocalDate;
 import java.util.Stack;
 
-/**
- *
- * @author yordan
- */
+// Clase que representa un reclamo ciudadano con su historial de cambios (Pila - LIFO)
 public class Reclamo {
     private int codigoUnico;
     private String nombreCiudadano;
@@ -17,61 +14,79 @@ public class Reclamo {
     private LocalDate fechaRegistro;
     private LocalDate fechaLimite;
     
+    // Pila para mantener historial de cambios 
     private Stack<String> historialEstados;
 
-    public Reclamo(int codigoUnico, String nombreCiudadano, String rutCiudadano, String tipoReclamo, String descripcion, int diasParaResolver) {
+    public Reclamo(int codigoUnico, String nombreCiudadano, String rutCiudadano, String tipoReclamo, String descripcion, String prioridad, String estadoReclamo, LocalDate fechaRegistro, LocalDate fechaLimite, Stack<String> historialEstados) {
         this.codigoUnico = codigoUnico;
         this.nombreCiudadano = nombreCiudadano;
         this.rutCiudadano = rutCiudadano;
         this.tipoReclamo = tipoReclamo;
         this.descripcion = descripcion;
-        this.prioridad = "Media"; 
-        this.estadoReclamo = "Pendiente";
-        this.fechaRegistro = LocalDate.now();
-        this.fechaLimite = LocalDate.now().plusDays(diasParaResolver);
-        
-        this.historialEstados = new Stack<>();
-        this.historialEstados.push("Caso Creado - Estado: Pendiente (" + fechaRegistro + ")");
+        this.prioridad = prioridad;
+        this.estadoReclamo = estadoReclamo;
+        this.fechaRegistro = fechaRegistro;
+        this.fechaLimite = fechaLimite;
+        this.historialEstados = historialEstados;
     }
-
+    // Actualiza el estado del reclamo y registra el cambio en la pila
     public void actualizarEstado(String nuevoEstado) {
         this.estadoReclamo = nuevoEstado;
         this.historialEstados.push("Modificado a: " + nuevoEstado + " (" + LocalDate.now() + ")");
     }
 
-    public int getCodigoUnico() { 
-        return codigoUnico; 
-    } 
-    public String getNombreCiudadano() { 
-        return nombreCiudadano; 
+    public int getCodigoUnico() {
+        return codigoUnico;
     }
-    public String getRutCiudadano() { 
-        return rutCiudadano; 
+
+    public String getNombreCiudadano() {
+        return nombreCiudadano;
     }
-    public String getTipoReclamo() { 
-        return tipoReclamo; 
+
+    public String getRutCiudadano() {
+        return rutCiudadano;
     }
-    public String getDescripcion() { 
-        return descripcion; 
+
+    public String getTipoReclamo() {
+        return tipoReclamo;
     }
-    public String getPrioridad() { 
-        return prioridad; 
+
+    public String getDescripcion() {
+        return descripcion;
     }
-    public void setPrioridad(String prioridad) {  
-        this.prioridad = prioridad;
+
+    public String getPrioridad() {
+        return prioridad;
     }
-    public String getEstadoReclamo() { 
-        return estadoReclamo; 
+
+    public String getEstadoReclamo() {
+        return estadoReclamo;
     }
-    public LocalDate getFechaRegistro() { 
+
+    public LocalDate getFechaRegistro() {
         return fechaRegistro;
     }
-    public LocalDate getFechaLimite() { 
-        return fechaLimite; 
+
+    public LocalDate getFechaLimite() {
+        return fechaLimite;
     }
-    public Stack<String> getHistorialEstados() { 
-        return historialEstados; 
+
+    public Stack<String> getHistorialEstados() {
+        return historialEstados;
     }
+
+    public void setTipoReclamo(String tipoReclamo) {
+        this.tipoReclamo = tipoReclamo;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setPrioridad(String prioridad) {
+        this.prioridad = prioridad;
+    }
+
 
     @Override
     public String toString() {

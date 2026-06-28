@@ -1,5 +1,6 @@
 package com.mycompany.gestionreclamos;
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class Ordenamiento {
 
@@ -120,5 +121,45 @@ public static void burbujaPorFechaLimite(ArrayList<Reclamo> lista) {
         // Recursividad (Divide and Conquer)
         if (primero < j) quickPorPrioridad(lista, primero, j);
         if (i < ultimo) quickPorPrioridad(lista, i, ultimo);
+    
     }
-    }   
+// Método Burbuja para ordenar por tipo de reclamo alfabéticamente - O(n²)
+    public static void burbujaPorTipo(ArrayList<Reclamo> lista) {
+        int n = lista.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (lista.get(j).getTipoReclamo().compareToIgnoreCase(lista.get(j + 1).getTipoReclamo()) > 0) {
+                    Reclamo temp = lista.get(j);
+                    lista.set(j, lista.get(j + 1));
+                    lista.set(j + 1, temp);
+                }
+            }
+        }
+        System.out.println("\n* Lista ordenada por Tipo de Reclamo *");
+    }
+
+    // Quick Sort por fecha de ingreso - O(n log n) - Divide and Conquer
+    public static void quickPorFechaIngreso(ArrayList<Reclamo> lista, int primero, int ultimo) {
+        int i = primero, j = ultimo;
+        LocalDate pivote = lista.get((primero + ultimo) / 2).getFechaRegistro();
+        
+        do {
+            while (lista.get(i).getFechaRegistro().isBefore(pivote)) i++;
+            while (lista.get(j).getFechaRegistro().isAfter(pivote)) j--;
+            
+            if (i <= j) {
+                Reclamo aux = lista.get(i);
+                lista.set(i, lista.get(j));
+                lista.set(j, aux);
+                i++; j--;
+            }
+        } while (i <= j);
+        
+        // Recursividad (Divide and Conquer)
+        if (primero < j) quickPorFechaIngreso(lista, primero, j);
+        if (i < ultimo) quickPorFechaIngreso(lista, i, ultimo);
+        
+        System.out.println("\n* Lista ordenada por Fecha de Ingreso *");
+    }    
+
+}   
