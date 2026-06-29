@@ -12,6 +12,7 @@ public class GestionReclamos {
         ListaReclamos lista = new ListaReclamos();
         ColaPendientes cola = new ColaPendientes();
         ArbolReclamos arbol = new ArbolReclamos();
+        ArbolAVL arbolAVL = new ArbolAVL();
         
         int opcion;
 
@@ -37,6 +38,9 @@ public class GestionReclamos {
             System.out.println("15. Ver arbol BST (InOrden)");
             System.out.println("16. Aplicar filtro de vencimientos");
             System.out.println("17. Ver historial de un reclamo");
+            System.out.println("18. Ver arbol AVL (InOrden)");
+            System.out.println("19. Ver arbol AVL (PreOrden)");
+            System.out.println("20. Ver arbol AVL (PostOrden)");
             System.out.println("0.  Salir");
             System.out.println("========================================");
             System.out.print("Seleccione una opcion: ");
@@ -66,6 +70,7 @@ public class GestionReclamos {
                     lista.agregarReclamo(nuevo);
                     cola.agregarReclamo(nuevo);
                     arbol.insertar(nuevo);
+                    arbolAVL.insertar(nuevo);
                     System.out.println("\n*** Reclamo registrado exitosamente ***");
                     break;
 
@@ -234,6 +239,18 @@ public class GestionReclamos {
                         System.out.println("\n*** Reclamo no encontrado ***");
                     }
                     break;
+                    
+                case 18:
+                        arbolAVL.mostrarInOrden();
+                        break;
+
+                case 19:
+                         arbolAVL.mostrarPreOrden();
+                         break;
+
+                case 20:
+                        arbolAVL.mostrarPostOrden();
+                        break;    
 
                 case 0:
                     System.out.println("\n*** Cerrando el sistema. Hasta luego. ***");
