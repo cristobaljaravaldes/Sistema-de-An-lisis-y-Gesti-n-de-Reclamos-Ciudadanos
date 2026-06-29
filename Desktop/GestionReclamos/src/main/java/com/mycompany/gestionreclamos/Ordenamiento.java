@@ -157,35 +157,38 @@ public class Ordenamiento {
         System.out.println("\n* Lista ordenada por Tipo de Reclamo *");
     }
 
-    // Quick Sort por fecha de ingreso - O(n log n) 
+    // Quick Sort por fecha de ingreso - caso promedio O(n log n) ,peor caso O(n²) 
     public static void quickPorFechaIngreso(ArrayList<Reclamo> lista, int primero, int ultimo) {
+        quickFechaIngresoRecursivo(lista, primero, ultimo);
+        System.out.println("\n* Lista ordenada por Fecha de Ingreso *");
+    }
+
+    // Método recursivo interno - Divide and Conquer
+    private static void quickFechaIngresoRecursivo(ArrayList<Reclamo> lista, int primero, int ultimo) {
         int i = primero, j = ultimo;
         
-        // Se extrae la fecha central para usarla como pivote de comparación.
+        // Fecha central como pivote
         LocalDate pivote = lista.get((primero + ultimo) / 2).getFechaRegistro();
-        
         do {
-            // Avanza si la fecha es anterior al pivote.
+            
+            // Avanza izquierda mientras sea anterior al pivote
             while (lista.get(i).getFechaRegistro().isBefore(pivote)) i++;
-            // Retrocede si la fecha es posterior al pivote.
+            // Retrocede derecha mientras sea posterior al pivote
             while (lista.get(j).getFechaRegistro().isAfter(pivote)) j--;
             
-            if (i <= j) {
-                
-                // Se realiza el intercambio.
-                Reclamo aux = lista.get(i);
-                lista.set(i, lista.get(j));
-                lista.set(j, aux);
-                i++; j--;
-            }    
+                // Intercambio si los punteros no se cruzaron
+                if (i <= j) {
+                    
+                    Reclamo temp = lista.get(i);
+                    lista.set(i, lista.get(j));
+                    lista.set(j, temp);
+                    i++; j--;
+                }
         } 
-        // Mientras que i sea mayor o igual a j...
-        while (i <= j);
+    while (i <= j);
         
-        // Recursividad (Divide and Conquer)
-        if (primero < j) quickPorFechaIngreso(lista, primero, j);
-        if (i < ultimo) quickPorFechaIngreso(lista, i, ultimo);
-        
-        System.out.println("\n* Lista ordenada por Fecha de Ingreso *");
-    }   
+        // Ordena mitad izquierda y derecha recursivamente
+        if (primero < j) quickFechaIngresoRecursivo(lista, primero, j);
+        if (i < ultimo) quickFechaIngresoRecursivo(lista, i, ultimo);
+    }
 }   
