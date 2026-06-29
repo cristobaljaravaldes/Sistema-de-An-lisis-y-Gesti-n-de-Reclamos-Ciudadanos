@@ -25,7 +25,7 @@ public class FiltroVencimientos {
                 
                 reclamo.setPrioridad("Alta");
                 // Registramos este evento automático en la pila de historial del reclamo
-                reclamo.getHistorialEstados().push("Prioridad escalada a ALTA automáticamente por vencimiento próximo (" + hoy + ")");
+                reclamo.getHistorialEstados().push("Prioridad escalada a ALTA automaticamente por vencimiento proximo (" + hoy + ")");
                 
                 System.out.println("-> ¡Alerta! Reclamo [" + reclamo.getCodigoUnico() + "] priorizado a ALTA (Días para vencer: " + diasRestantes + ")");
                 huboCambios = true;
@@ -33,7 +33,7 @@ public class FiltroVencimientos {
         }
         
         if (!huboCambios) {
-            System.out.println("-> No se encontraron reclamos próximos a vencer que requieran priorización.");
+            System.out.println("-> No se encontraron reclamos proximos a vencer que requieran priorizacion.");
         }
     }
 }

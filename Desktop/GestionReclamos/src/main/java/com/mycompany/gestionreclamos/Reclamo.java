@@ -14,79 +14,47 @@ public class Reclamo {
     private LocalDate fechaRegistro;
     private LocalDate fechaLimite;
     
-    // Pila para mantener historial de cambios 
+    // Pila para mantener historial de cambios - estructura LIFO
     private Stack<String> historialEstados;
 
-    public Reclamo(int codigoUnico, String nombreCiudadano, String rutCiudadano, String tipoReclamo, String descripcion, String prioridad, String estadoReclamo, LocalDate fechaRegistro, LocalDate fechaLimite, Stack<String> historialEstados) {
+    // Constructor - genera fecha de registro automática y calcula fecha límite
+    public Reclamo(int codigoUnico, String nombreCiudadano, String rutCiudadano, String tipoReclamo, String descripcion, int diasParaResolver) {
         this.codigoUnico = codigoUnico;
         this.nombreCiudadano = nombreCiudadano;
         this.rutCiudadano = rutCiudadano;
         this.tipoReclamo = tipoReclamo;
         this.descripcion = descripcion;
-        this.prioridad = prioridad;
-        this.estadoReclamo = estadoReclamo;
-        this.fechaRegistro = fechaRegistro;
-        this.fechaLimite = fechaLimite;
-        this.historialEstados = historialEstados;
+        this.prioridad = "Media";
+        this.estadoReclamo = "Pendiente";
+        this.fechaRegistro = LocalDate.now();
+        this.fechaLimite = LocalDate.now().plusDays(diasParaResolver);
+        
+        this.historialEstados = new Stack<>();
+        this.historialEstados.push("Caso Creado - Estado: Pendiente (" + fechaRegistro + ")");
     }
+
     // Actualiza el estado del reclamo y registra el cambio en la pila
     public void actualizarEstado(String nuevoEstado) {
         this.estadoReclamo = nuevoEstado;
         this.historialEstados.push("Modificado a: " + nuevoEstado + " (" + LocalDate.now() + ")");
     }
 
-    public int getCodigoUnico() {
-        return codigoUnico;
-    }
+    // Getters
+    public int getCodigoUnico() { return codigoUnico; }
+    public String getNombreCiudadano() { return nombreCiudadano; }
+    public String getRutCiudadano() { return rutCiudadano; }
+    public String getTipoReclamo() { return tipoReclamo; }
+    public String getDescripcion() { return descripcion; }
+    public String getPrioridad() { return prioridad; }
+    public String getEstadoReclamo() { return estadoReclamo; }
+    public LocalDate getFechaRegistro() { return fechaRegistro; }
+    public LocalDate getFechaLimite() { return fechaLimite; }
+    public Stack<String> getHistorialEstados() { return historialEstados; }
 
-    public String getNombreCiudadano() {
-        return nombreCiudadano;
-    }
-
-    public String getRutCiudadano() {
-        return rutCiudadano;
-    }
-
-    public String getTipoReclamo() {
-        return tipoReclamo;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public String getPrioridad() {
-        return prioridad;
-    }
-
-    public String getEstadoReclamo() {
-        return estadoReclamo;
-    }
-
-    public LocalDate getFechaRegistro() {
-        return fechaRegistro;
-    }
-
-    public LocalDate getFechaLimite() {
-        return fechaLimite;
-    }
-
-    public Stack<String> getHistorialEstados() {
-        return historialEstados;
-    }
-
-    public void setTipoReclamo(String tipoReclamo) {
-        this.tipoReclamo = tipoReclamo;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public void setPrioridad(String prioridad) {
-        this.prioridad = prioridad;
-    }
-
+    // Setters para modificación de reclamos
+    public void setPrioridad(String prioridad) { this.prioridad = prioridad; }
+    public void setTipoReclamo(String tipoReclamo) { this.tipoReclamo = tipoReclamo; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
     @Override
     public String toString() {

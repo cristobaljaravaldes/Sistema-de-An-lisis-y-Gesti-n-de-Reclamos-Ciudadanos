@@ -21,7 +21,7 @@ public class Ordenamiento {
                 }
             }
         }
-        System.out.println("\n* Lista ordenada por Código *");
+        System.out.println("\n* Lista ordenada por Codigo *");
     }
 
     // Método Quick Sort 
@@ -75,7 +75,7 @@ public static void burbujaPorFechaLimite(ArrayList<Reclamo> lista) {
             }
         }
     }
-    System.out.println("\n*Lista ordenada por Fecha Límite*");
+    System.out.println("\n*Lista ordenada por Fecha limite*");
 }
 
 // Metodo Quick Sort por prioridad

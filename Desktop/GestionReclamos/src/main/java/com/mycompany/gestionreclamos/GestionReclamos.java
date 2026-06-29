@@ -18,28 +18,28 @@ public class GestionReclamos {
         do {
             System.out.println("\n========================================");
             System.out.println("  MUNICIPALIDAD SAN RAFAEL");
-            System.out.println("  Sistema de Gestión de Reclamos");
+            System.out.println("  Sistema de Gestion de Reclamos");
             System.out.println("========================================");
             System.out.println("1.  Registrar nuevo reclamo");
             System.out.println("2.  Mostrar todos los reclamos");
-            System.out.println("3.  Buscar por código (Búsqueda Binaria)");
-            System.out.println("4.  Buscar por RUT (Búsqueda Secuencial)");
+            System.out.println("3.  Buscar por codigo (Busqueda Binaria)");
+            System.out.println("4.  Buscar por RUT (Busqueda Secuencial)");
             System.out.println("5.  Modificar reclamo");
             System.out.println("6.  Eliminar reclamo");
             System.out.println("7.  Actualizar estado de reclamo");
-            System.out.println("8.  Ordenar por código (Burbuja)");
+            System.out.println("8.  Ordenar por codigo (Burbuja)");
             System.out.println("9.  Ordenar por prioridad (Quick Sort)");
-            System.out.println("10. Ordenar por fecha límite");
+            System.out.println("10. Ordenar por fecha limite");
             System.out.println("11. Ordenar por fecha de ingreso");
             System.out.println("12. Ordenar por tipo de reclamo");
             System.out.println("13. Ver cola de pendientes");
             System.out.println("14. Atender siguiente reclamo");
-            System.out.println("15. Ver árbol BST (InOrden)");
+            System.out.println("15. Ver arbol BST (InOrden)");
             System.out.println("16. Aplicar filtro de vencimientos");
             System.out.println("17. Ver historial de un reclamo");
             System.out.println("0.  Salir");
             System.out.println("========================================");
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Seleccione una opcion: ");
             opcion = scanner.nextInt();
             scanner.nextLine();
 
@@ -47,7 +47,7 @@ public class GestionReclamos {
 
                 case 1:
                     // Registrar nuevo reclamo
-                    System.out.print("Código único: ");
+                    System.out.print("Codigo unico: ");
                     int codigo = scanner.nextInt();
                     scanner.nextLine();
                     System.out.print("Nombre ciudadano: ");
@@ -56,9 +56,9 @@ public class GestionReclamos {
                     String rut = scanner.nextLine();
                     System.out.print("Tipo de reclamo: ");
                     String tipo = scanner.nextLine();
-                    System.out.print("Descripción: ");
+                    System.out.print("Descripcion: ");
                     String descripcion = scanner.nextLine();
-                    System.out.print("Días para resolver: ");
+                    System.out.print("Dias para resolver: ");
                     int dias = scanner.nextInt();
                     scanner.nextLine();
 
@@ -76,7 +76,7 @@ public class GestionReclamos {
 
                 case 3:
                     // Búsqueda binaria por código - requiere lista ordenada
-                    System.out.print("Ingrese código a buscar: ");
+                    System.out.print("Ingrese codigo a buscar: ");
                     int codBinaria = scanner.nextInt();
                     scanner.nextLine();
 
@@ -100,18 +100,18 @@ public class GestionReclamos {
                     if (encontradoRut != null) {
                         System.out.println("\nReclamo encontrado: " + encontradoRut);
                     } else {
-                        System.out.println("\n*** No se encontró reclamo con ese RUT ***");
+                        System.out.println("\n*** No se encontro reclamo con ese RUT ***");
                     }
                     break;
 
                 case 5:
                     // Modificar reclamo
-                    System.out.print("Código del reclamo a modificar: ");
+                    System.out.print("Codigo del reclamo a modificar: ");
                     int codModificar = scanner.nextInt();
                     scanner.nextLine();
                     System.out.print("Nuevo tipo de reclamo: ");
                     String nuevoTipo = scanner.nextLine();
-                    System.out.print("Nueva descripción: ");
+                    System.out.print("Nueva descripcion: ");
                     String nuevaDesc = scanner.nextLine();
 
                     boolean modificado = lista.modificarReclamo(codModificar, nuevoTipo, nuevaDesc);
@@ -124,7 +124,7 @@ public class GestionReclamos {
 
                 case 6:
                     // Eliminar reclamo
-                    System.out.print("Código del reclamo a eliminar: ");
+                    System.out.print("Codigo del reclamo a eliminar: ");
                     int codEliminar = scanner.nextInt();
                     scanner.nextLine();
 
@@ -138,7 +138,7 @@ public class GestionReclamos {
 
                 case 7:
                     // Actualizar estado
-                    System.out.print("Código del reclamo: ");
+                    System.out.print("Codigo del reclamo: ");
                     int codEstado = scanner.nextInt();
                     scanner.nextLine();
                     Reclamo reclamoEstado = lista.buscarPorCodigo(codEstado);
@@ -207,7 +207,7 @@ public class GestionReclamos {
 
                 case 15:
                     // Ver árbol BST recorrido InOrden
-                    System.out.println("\n=== ÁRBOL BST - RECORRIDO INORDEN ===");
+                    System.out.println("\n=== ARBOL BST - RECORRIDO INORDEN ===");
                     arbol.mostrarInOrden();
                     break;
 
@@ -218,7 +218,7 @@ public class GestionReclamos {
 
                 case 17:
                     // Ver historial de cambios de un reclamo (Pila)
-                    System.out.print("Código del reclamo: ");
+                    System.out.print("Codigo del reclamo: ");
                     int codHistorial = scanner.nextInt();
                     scanner.nextLine();
                     Reclamo reclamoHistorial = lista.buscarPorCodigo(codHistorial);
@@ -240,7 +240,7 @@ public class GestionReclamos {
                     break;
 
                 default:
-                    System.out.println("\n*** Opción no válida ***");
+                    System.out.println("\n*** Opción no valida ***");
             }
 
         } while (opcion != 0);

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class BusquedaBinaria {
 
     // Búsqueda binaria por código único - requiere lista ordenada previamente
-    // Usar cuando: la lista está ordenada y el volumen de reclamos es grande
+    // Usar cuando: la lista está ordenada y el volumen de reclamos es grande1
     public static Reclamo buscarPorCodigo(ArrayList<Reclamo> lista, int codigoBuscado) {
         int izquierda = 0;
         int derecha = lista.size() - 1;
