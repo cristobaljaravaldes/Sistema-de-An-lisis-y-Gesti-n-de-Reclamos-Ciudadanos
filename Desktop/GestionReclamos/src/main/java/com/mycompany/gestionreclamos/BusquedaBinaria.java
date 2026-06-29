@@ -1,11 +1,11 @@
 package com.mycompany.gestionreclamos;
 import java.util.ArrayList;
 
-// Clase que implementa los algoritmos de ordenamiento cuadrático (Burbuja) y eficiente (Quick Sort)
+// Clase que implementa el algoritmo de búsqueda
 public class BusquedaBinaria {
 
-    // Búsqueda binaria por código único - requiere lista ordenada previamente
-    // Usar cuando: la lista está ordenada y el volumen de reclamos es grande1
+    // Búsqueda binaria por código único - O(log n)
+    // Usar cuando: la lista está ordenada y el volumen de reclamos es grande
     public static Reclamo buscarPorCodigo(ArrayList<Reclamo> lista, int codigoBuscado) {
         int izquierda = 0;
         int derecha = lista.size() - 1;

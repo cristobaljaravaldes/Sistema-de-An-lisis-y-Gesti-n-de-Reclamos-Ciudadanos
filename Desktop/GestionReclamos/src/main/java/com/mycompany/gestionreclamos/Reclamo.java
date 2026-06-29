@@ -17,7 +17,7 @@ public class Reclamo {
     // Pila para mantener historial de cambios - estructura LIFO
     private Stack<String> historialEstados;
 
-    // Constructor - genera fecha de registro automática y calcula fecha límite
+    // Constructor - genera fecha de registro automática y calcula fecha límite - O(1)
     public Reclamo(int codigoUnico, String nombreCiudadano, String rutCiudadano, String tipoReclamo, String descripcion, int diasParaResolver) {
         this.codigoUnico = codigoUnico;
         this.nombreCiudadano = nombreCiudadano;
@@ -33,13 +33,13 @@ public class Reclamo {
         this.historialEstados.push("Caso Creado - Estado: Pendiente (" + fechaRegistro + ")");
     }
 
-    // Actualiza el estado del reclamo y registra el cambio en la pila
+    // Actualiza el estado del reclamo y registra el cambio en la pila - O(1)
     public void actualizarEstado(String nuevoEstado) {
         this.estadoReclamo = nuevoEstado;
         this.historialEstados.push("Modificado a: " + nuevoEstado + " (" + LocalDate.now() + ")");
     }
 
-    // Getters
+    // Getters - O(1)
     public int getCodigoUnico() { return codigoUnico; }
     public String getNombreCiudadano() { return nombreCiudadano; }
     public String getRutCiudadano() { return rutCiudadano; }
@@ -51,7 +51,7 @@ public class Reclamo {
     public LocalDate getFechaLimite() { return fechaLimite; }
     public Stack<String> getHistorialEstados() { return historialEstados; }
 
-    // Setters para modificación de reclamos
+    // Setters - O(1)
     public void setPrioridad(String prioridad) { this.prioridad = prioridad; }
     public void setTipoReclamo(String tipoReclamo) { this.tipoReclamo = tipoReclamo; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
