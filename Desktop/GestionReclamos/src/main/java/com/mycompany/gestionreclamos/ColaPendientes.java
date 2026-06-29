@@ -9,7 +9,7 @@ public class ColaPendientes {
     //Almacena objetos de tipo Reclamo en orden de llegada
     private Queue<Reclamo> cola;
     
-    //Constructor: inicializa la cola de reclamos utilizando una lista enlazada
+    //Constructor: inicializa la cola de reclamos utilizando una lista enlazada - O(1)
     public ColaPendientes(){
         cola = new LinkedList<>();
     }
@@ -31,7 +31,7 @@ public class ColaPendientes {
         return atendido;
     }
     
-    //Muestra la lista completa de reclamos en espera
+    //Muestra la lista completa de reclamos en espera - O(n)
     public void mostrarReclamos(){
         if(cola.isEmpty()){
             System.out.println("\n*** No hay reclamos activos en la cola ***");
@@ -43,7 +43,7 @@ public class ColaPendientes {
         }
     }
     
-    //Busca un reclamo en la cola por su código único
+    //Busca un reclamo en la cola por su código único - O(n)
     public Reclamo buscarPorCodigo(int codigoUnico) {
         for (Reclamo reclamo : cola) {
             if (reclamo.getCodigoUnico() == codigoUnico) {
