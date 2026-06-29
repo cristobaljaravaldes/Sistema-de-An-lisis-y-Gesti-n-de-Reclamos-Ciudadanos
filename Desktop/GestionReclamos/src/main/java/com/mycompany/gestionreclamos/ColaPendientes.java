@@ -17,7 +17,7 @@ public class ColaPendientes {
     //Agrega un nuevo reclamo al final de la cola de atención
     public void agregarReclamo(Reclamo reclamo){
         cola.offer(reclamo);
-        System.out.println("\n*** Reclamo agregado a la cola de atención ***");
+        System.out.println("\n*** Reclamo agregado a la cola de atencion ***");
     }
     
     //Obtiene y atiende el reclamo que está al principio de la cola
