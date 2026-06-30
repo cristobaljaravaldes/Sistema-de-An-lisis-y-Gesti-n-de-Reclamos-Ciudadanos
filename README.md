@@ -1,7 +1,7 @@
 =============================================================
   SISTEMA DE GESTION DE RECLAMOS CIUDADANOS
   Municipalidad de San Rafael
-  Fundamentos de Estructura de Datos - Grupo XX
+  Fundamentos de Estructura de Datos - Grupo 03
 =============================================================
 
 REQUISITOS
